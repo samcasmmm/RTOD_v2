@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RTOD_v2</string>
+    <string name="logo_str">Real-Time Object Detection</string>
+    <string name="UsernameHint">Username</string>
+    <string name="Email">Email</string>
+    <string name="Passwd">Password</string>
+    <string name="ConPasswd"> Confirm Password</string>
+    <string name="LoginButton">Login</string>
+    <string name="SignUpButton">SignUp</string>
+    <string name="donthaveACC">Need an Account</string>
+    <string name="forgetPasswd">Forget Password ?</string>
+    <string name="AlreadyhvACC">Have an Account</string>
+</resources>

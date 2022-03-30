@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_bg1"
+    tools:context="com.example.rtod_v2.Auth.EditProfile">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearLayout"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        >
+
+        <ImageView
+            android:layout_width="131dp"
+            android:layout_height="143dp"
+            android:id="@+id/profileImageView"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_person"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileFullName"
+            android:maxLines="1"
+            android:hint="Name"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_bg"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileEmailAddress"
+            android:maxLines="1"
+            android:hint="Email"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_bg"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profilePhoneNo"
+            android:maxLines="1"
+            android:hint="Phone"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_bg"
+            android:inputType="text"
+            />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:layout_marginTop="15dp"
+        android:id="@+id/saveProfileInfo"
+        android:background="@drawable/custombtn3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</RelativeLayout>
