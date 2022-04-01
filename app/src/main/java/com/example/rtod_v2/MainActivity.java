@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.rtod_v2.Auth.AuthMainActivity;
+import com.example.rtod_v2.facial.CameraActivity;
 
 import org.opencv.android.OpenCVLoader;
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView profileEdit;
 //    Button RTODetectionBtn,HandSignBtn,EditProfileBtn,scan_lenBTN;
-    CardView cv_objectDetection, cv_signLang,cv_chatBot, cv_scanLen, cv_feedback;
+    CardView cv_objectDetection, cv_signLang,cv_chatBot, cv_scanLen, cv_feedback,cv_faceRec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         cv_chatBot = findViewById(R.id.cv_chatBOT);
         profileEdit = findViewById(R.id.profile_edit);
         cv_feedback = findViewById(R.id.cv_feedback);
+        cv_faceRec = findViewById(R.id.cv_faceRec);
 
 
         cv_chatBot.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, com.example.rtod_v2.chatBot.MainActivity.class));
             }
         });
+
+
+
 
 
 //        profileEdit.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,com.example.rtod_v2.ObjDetect.CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
+
+
+        cv_faceRec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 

@@ -28,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RTOD_v2_1">
         <activity
+            android:name=".facial.CameraActivity"
+            android:exported="false" />
+        <activity
             android:name=".Auth.AuthMainActivity"
             android:exported="false" />
         <activity
@@ -50,7 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".ObjDetect.CameraActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".splashscreen"
             android:exported="true">

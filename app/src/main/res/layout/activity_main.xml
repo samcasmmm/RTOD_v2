@@ -146,6 +146,7 @@
                 android:layout_height="150dp"
                 app:cardCornerRadius="15dp"
                 android:layout_margin="10dp"
+                android:id="@+id/cv_faceRec"
                 app:cardBackgroundColor="@color/black20"
                 >
 
@@ -153,20 +154,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/robot"
+                        android:background="@drawable/personface"
                         />
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ChatBot"
+                        android:text="Face Expression"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:layout_margin="5dp"
