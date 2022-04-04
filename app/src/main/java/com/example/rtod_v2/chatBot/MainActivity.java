@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton sendMsgFAB;
     private final String BOT_KEY = "bot";
     private final String USER_KEY = "user";
-    private ArrayList<com.example.rtod_v2.chatBot.ChatsModels>chatsModelsArrayList;
+    private ArrayList<ChatsModels>chatsModelsArrayList;
     private ChatRV_Adapter chatRV_adapter;
 
     @Override
@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         chatsModelsArrayList.add(new ChatsModels(message,USER_KEY));
         chatRV_adapter.notifyDataSetChanged();
-        String url = "http://api.brainshop.ai/get?bid=164334&key=RhXuzHnkDj2vdQrz&uid=[uid]&msg="+message;
+//        String url = "http://api.brainshop.ai/get?bid=164334&key=RhXuzHnkDj2vdQrz&uid=[uid]&msg="+message;
+        String url = "http://api.brainshop.ai/get?bid=165327&key=WJ8JlqBYneKFNTSi&uid=[uid]&msg="+message;
         String BASE_URL = "http://api.brainshop.ai/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Call<MsgModel> call = retrofitAPI.getMessage(url);
         call.enqueue(new Callback<MsgModel>() {
             @Override
-            public void onResponse(@NonNull Call<MsgModel> call, @NonNull Response<MsgModel> response) {
+            public void onResponse(Call<MsgModel> call, Response<MsgModel> response) {
                 if (response.isSuccessful()){
                     MsgModel model = response.body();
                     chatsModelsArrayList.add(new ChatsModels(model.getCnt(),BOT_KEY));
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<MsgModel> call, @NonNull Throwable t) {
+            public void onFailure(Call<MsgModel> call, Throwable t) {
                 chatsModelsArrayList.add(new ChatsModels("Please Revert Your Question",BOT_KEY));
                 chatRV_adapter.notifyDataSetChanged();
             }

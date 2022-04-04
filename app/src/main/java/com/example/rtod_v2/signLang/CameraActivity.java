@@ -63,7 +63,6 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         int MY_PERMISSIONS_REQUEST_CAMERA=0;
-        // if camera permission is not given it will ask for it on device
         if (ContextCompat.checkSelfPermission(CameraActivity.this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(CameraActivity.this, new String[] {Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
@@ -88,12 +87,11 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     protected void onResume() {
         super.onResume();
         if (OpenCVLoader.initDebug()){
-            //if load success
+
             Log.d(TAG,"Opencv initialization is done");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
         else{
-            //if not loaded
             Log.d(TAG,"Opencv is not loaded. try again");
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this,mLoaderCallback);
         }
@@ -125,9 +123,6 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame){
         mRgba=inputFrame.rgba();
         mGray=inputFrame.gray();
-        // Before watching this video please watch previous video of loading tensorflow lite model
-
-        // now call that function
         Mat out=new Mat();
         out= signLangDetection.recognizeImage(mRgba);
 
