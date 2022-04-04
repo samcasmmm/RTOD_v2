@@ -56,16 +56,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-//        profileEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this,AuthMainActivity.class));
-//            }
-//        });
+        profileEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,AuthMainActivity.class));
+            }
+        });
 
         cv_objectDetection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,18 +74,17 @@ public class MainActivity extends AppCompatActivity {
         cv_faceRec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(MainActivity.this, com.example.rtod_v2.facial.CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 
+        cv_signLang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, com.example.rtod_v2.signLang.CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
 
-
-//        cv_scanLen.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, com.example.objectdetect_v1.RTOD_Len.MainRLenActivity.class));
-//            }
-//        });
 
 //        cv_feedback.setOnClickListener(new View.OnClickListener() {
 //            @Override
