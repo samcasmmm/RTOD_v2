@@ -5,13 +5,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rtod_v2.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.opencv.features2d.MSER;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton sendMsgFAB;
     private final String BOT_KEY = "bot";
     private final String USER_KEY = "user";
-    private ArrayList<ChatsModels>chatsModelsArrayList;
+    private ArrayList<ChatsModal>chatsModalArrayList;
     private ChatRV_Adapter chatRV_adapter;
 
     @Override
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         chatsRV = findViewById(R.id.idRVChat);
         userMsgEdit = findViewById(R.id.EditMSG);
         sendMsgFAB = findViewById(R.id.idFABSend);
-        chatsModelsArrayList = new ArrayList<>();
-        chatRV_adapter = new ChatRV_Adapter(chatsModelsArrayList,this);
+        chatsModalArrayList = new ArrayList<>();
+        chatRV_adapter = new ChatRV_Adapter(chatsModalArrayList,this);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         chatsRV.setLayoutManager(manager);
         chatsRV.setAdapter(chatRV_adapter);
@@ -62,30 +63,30 @@ public class MainActivity extends AppCompatActivity {
     }
     private void getResponse(String message){
 
-        chatsModelsArrayList.add(new ChatsModels(message,USER_KEY));
+        chatsModalArrayList.add(new ChatsModal(message,USER_KEY));
         chatRV_adapter.notifyDataSetChanged();
-//        String url = "http://api.brainshop.ai/get?bid=164334&key=RhXuzHnkDj2vdQrz&uid=[uid]&msg="+message;
-        String url = "http://api.brainshop.ai/get?bid=165327&key=WJ8JlqBYneKFNTSi&uid=[uid]&msg="+message;
+        String url = "http://api.brainshop.ai/get?bid=164334&key=RhXuzHnkDj2vdQrz&uid=[uid]&msg="+message;
+//        String url = "http://api.brainshop.ai/get?bid=165327&key=WJ8JlqBYneKFNTSi&uid=[uid]&msg="+message;
         String BASE_URL = "http://api.brainshop.ai/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-        Call<MsgModel> call = retrofitAPI.getMessage(url);
-        call.enqueue(new Callback<MsgModel>() {
+        Call<MsgModal> call = retrofitAPI.getMessage(url);
+        call.enqueue(new Callback<MsgModal>() {
             @Override
-            public void onResponse(Call<MsgModel> call, Response<MsgModel> response) {
+            public void onResponse(Call<MsgModal> call, Response<MsgModal> response) {
                 if (response.isSuccessful()){
-                    MsgModel model = response.body();
-                    chatsModelsArrayList.add(new ChatsModels(model.getCnt(),BOT_KEY));
+                    MsgModal modal = response.body();
+                    chatsModalArrayList.add(new ChatsModal(modal.getCnt(),BOT_KEY));
                     chatRV_adapter.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<MsgModel> call, Throwable t) {
-                chatsModelsArrayList.add(new ChatsModels("Please Revert Your Question",BOT_KEY));
+            public void onFailure(Call<MsgModal> call, Throwable t) {
+                chatsModalArrayList.add(new ChatsModal("Please Revert Your Question",BOT_KEY));
                 chatRV_adapter.notifyDataSetChanged();
             }
         });

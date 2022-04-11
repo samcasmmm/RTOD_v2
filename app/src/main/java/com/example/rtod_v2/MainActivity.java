@@ -86,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        cv_feedback.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, com.example.objectdetect_v1.feedBack.feedback_main.class));
-//            }
-//        });
+        cv_scanLen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, com.example.rtod_v2.scanLen.scanMainActivity.class));
+            }
+        });
     }
 }

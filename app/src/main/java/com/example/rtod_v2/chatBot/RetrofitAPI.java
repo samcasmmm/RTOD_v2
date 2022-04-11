@@ -7,6 +7,6 @@ import retrofit2.http.Url;
 public interface RetrofitAPI {
 
     @GET
-    Call<MsgModel> getMessage(@Url String url);
+    Call<MsgModal> getMessage(@Url String url);
 
 }

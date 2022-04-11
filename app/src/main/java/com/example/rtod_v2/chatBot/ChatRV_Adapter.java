@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class ChatRV_Adapter extends RecyclerView.Adapter {
 
-    private ArrayList<ChatsModels> chatsModelsArrayList;
+    private ArrayList<ChatsModal> chatsModalArrayList;
     private Context context;
 
-    public ChatRV_Adapter(ArrayList<ChatsModels> chatsModelsArrayList, Context context) {
-        this.chatsModelsArrayList = chatsModelsArrayList;
+    public ChatRV_Adapter(ArrayList<ChatsModal> chatsModelsArrayList, Context context) {
+        this.chatsModalArrayList = chatsModelsArrayList;
         this.context = context;
     }
 
@@ -41,20 +41,20 @@ public class ChatRV_Adapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ChatsModels chatsModels = chatsModelsArrayList.get(position);
-        switch (chatsModels.getSender()){
+        ChatsModal chatsModal = chatsModalArrayList.get(position);
+        switch (chatsModal.getSender()){
             case "user":
-                ((user_ViewHolder)holder).userTV.setText(chatsModels.getMessage());
+                ((user_ViewHolder)holder).userTV.setText(chatsModal.getMessage());
                 break;
             case "bot":
-                ((bot_ViewHolder)holder).botTV.setText(chatsModels.getMessage());
+                ((bot_ViewHolder)holder).botTV.setText(chatsModal.getMessage());
                 break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        switch (chatsModelsArrayList.get(position).getSender()){
+        switch (chatsModalArrayList.get(position).getSender()){
             case "user":
               return 0;
 
@@ -69,7 +69,7 @@ public class ChatRV_Adapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return chatsModelsArrayList.size();
+        return chatsModalArrayList.size();
     }
 
     public static class user_ViewHolder extends RecyclerView.ViewHolder{

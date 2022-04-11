@@ -1,6 +1,6 @@
 package com.example.rtod_v2.chatBot;
 
-public class ChatsModels {
+public class ChatsModal {
 
     private String message;
     private String sender;
@@ -21,7 +21,7 @@ public class ChatsModels {
         this.sender = sender;
     }
 
-    public ChatsModels(String message, String sender) {
+    public ChatsModal(String message, String sender) {
         this.message = message;
         this.sender = sender;
     }

@@ -1,6 +1,6 @@
 package com.example.rtod_v2.chatBot;
 
-public class MsgModel {
+public class MsgModal {
 
     private String cnt;
 
@@ -11,7 +11,7 @@ public class MsgModel {
     public void setCnt(String cnt) {
         this.cnt = cnt;
     }
-    public MsgModel(String cnt) {
+    public MsgModal(String cnt) {
         this.cnt = cnt;
     }
 }
