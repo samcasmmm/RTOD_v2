@@ -21,32 +21,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginLogo"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/Email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/Email"
             android:layout_marginTop="15dp"
             android:background="@drawable/edittext_bg"
             android:hint="@string/Email"
             android:maxLines="1"
-            android:padding="10dp"
-            />
+            android:padding="10dp" />
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/password"
             android:layout_marginTop="15dp"
             android:background="@drawable/edittext_bg"
             android:hint="@string/Passwd"
             android:maxLines="1"
-            android:padding="10dp"
-            />
+            android:padding="10dp" />
 
         <Button
             android:id="@+id/loginBtn"
@@ -54,17 +52,17 @@
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/LoginButton"
             android:background="@drawable/custombtn2"
-            android:textStyle="bold"
+            android:text="@string/LoginButton"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            android:textColor="@color/white" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/util"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView

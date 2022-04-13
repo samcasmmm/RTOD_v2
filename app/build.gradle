@@ -101,4 +101,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
     implementation 'com.google.firebase:firebase-ml-vision-image-label-model:20.0.1'
 
+    // Gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+    implementation "com.airbnb.android:lottie:3.4.0"
+
 }
