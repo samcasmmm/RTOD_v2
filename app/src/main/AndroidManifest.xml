@@ -30,6 +30,9 @@
         android:theme="@style/Theme.RTOD_v2_1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".feedback.feedMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".scanLen.scanMainActivity"
             android:exported="true" />
         <activity

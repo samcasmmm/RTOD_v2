@@ -48,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
         cv_feedback = findViewById(R.id.cv_feedback);
         cv_faceRec = findViewById(R.id.cv_faceRec);
 
+        cv_feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,com.example.rtod_v2.feedback.feedMainActivity.class));
+            }
+        });
+
 
         cv_chatBot.setOnClickListener(new View.OnClickListener() {
             @Override
