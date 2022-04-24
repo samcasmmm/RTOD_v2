@@ -33,6 +33,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 
@@ -138,6 +139,7 @@ public class facialExpressionRecognition {
                     1,1.5,new Scalar(0,0,255,150),2);
 
             tempObj = emotion_s;
+            saveLog();
         }
 
         Core.flip(mat_image.t(),mat_image,0);
@@ -146,8 +148,9 @@ public class facialExpressionRecognition {
 
     public void saveLog(){
 
+        LocalDate dateObj = LocalDate.now();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("Face-Expression-LOG");
+        DatabaseReference myRef = database.getReference().child("Face-Expression-LOG").child("Date : "+dateObj.toString());
 
         HashMap<String, String> objMap = new HashMap<>();
         LocalTime myObj = LocalTime.now();

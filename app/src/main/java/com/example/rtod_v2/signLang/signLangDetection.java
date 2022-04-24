@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.checkerframework.checker.units.qual.A;
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
@@ -25,7 +28,10 @@ import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,6 +51,7 @@ public class  signLangDetection {
     private int height=0;
     private  int width=0;
     private int Classification_inputSize=0;
+    String tempObj="";
 
 
     signLangDetection(AssetManager assetManager, String modelPath, String labelPath, int inputSize,String classification_model,int classification_inputSize) throws IOException{
@@ -171,6 +178,9 @@ public class  signLangDetection {
 
                 // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
                 Imgproc.rectangle(rotated_mat_image,new Point(x1,y1),new Point(x2,y2),new Scalar(0, 255, 0, 255),2);
+
+                tempObj = get_alphabet(output_class_value[0][0]);
+                saveData();
             }
         }
 
@@ -179,8 +189,24 @@ public class  signLangDetection {
         b.release();
         return mat_image;
     }
+    private void saveData() {
 
-    private  String get_alphabet(float sign_v){
+        LocalDate dateObj = LocalDate.now();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("Sign-Language-LOG").child("Date : " + dateObj.toString());
+
+        LocalTime myObj = LocalTime.now();
+        String objName = tempObj;
+
+        HashMap<String, String> objMap = new HashMap<>();
+        objMap.put("Alphabet", objName);
+        objMap.put("Time", myObj.toString());
+
+        myRef.push().setValue(objMap);
+    }
+
+
+        private  String get_alphabet(float sign_v){
         String val="";
         if(sign_v>=-0.5 & sign_v<0.5){
             val="A";

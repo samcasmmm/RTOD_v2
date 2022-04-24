@@ -49,6 +49,8 @@ public class objectDetectorClass {
     private int height=0;
     private  int width=0;
 
+    String tempObj="";
+
     objectDetectorClass(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException {
         INPUT_SIZE=inputSize;
         // use to define gpu or cpu // no. of threads
@@ -163,18 +165,8 @@ public class objectDetectorClass {
                 // string of class name of object  // starting point                         // color of text           // size of text
                 Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(110, 0, 255, 255),2);
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference().child("OBJECT-DETECTION-LOG");
-
-                LocalTime myObj = LocalTime.now();
-                String objName = labelList.get((int) class_value);
-
-                HashMap<String,String> objMap = new HashMap<>();
-                objMap.put("Name",objName);
-                objMap.put("Time",myObj.toString());
-
-                myRef.push().setValue(objMap);
-
+                tempObj = labelList.get((int) class_value);
+                saveData();
             }
 
         }
@@ -183,6 +175,23 @@ public class objectDetectorClass {
         // before returning rotate back by -90 degree
         Core.flip(rotated_mat_image.t(),mat_image,0);
         return mat_image;
+    }
+
+    private void saveData(){
+
+        LocalDate dateObj = LocalDate.now();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("Object-Detection-LOG").child("Date : "+dateObj.toString());
+
+        LocalTime myObj = LocalTime.now();
+        String objName = tempObj;
+
+        HashMap<String,String> objMap = new HashMap<>();
+        objMap.put("Name",objName);
+        objMap.put("Time",myObj.toString());
+
+        myRef.push().setValue(objMap);
+
     }
 
     private ByteBuffer convertBitmapToByteBuffer(Bitmap bitmap) {
