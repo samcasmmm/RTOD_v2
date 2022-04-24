@@ -33,9 +33,13 @@
         <entry key="..\:/Users/PC/Desktop/And_stuff/Project/git/RTOD_v2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.196" />
         <entry key="..\:/Users/PC/Desktop/And_stuff/Project/git/RTOD_v2/app/src/main/res/mipmap-hdpi/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/PC/Desktop/And_stuff/Project/git/RTOD_v2/app/src/main/res/mipmap-hdpi/ic_launcher_round.xml" value="0.196" />
+        <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/drawable/custombtn.xml" value="0.1" />
+        <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/drawable/custombtn3.xml" value="0.134" />
         <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/drawable/edittext2_bg.xml" value="0.1" />
         <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/layout/activity_feed_main.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/layout/activity_main_auth.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/layout/activity_scan_main.xml" value="0.25" />
+        <entry key="..\:/Users/PC/Desktop/FinalProject/RTOD_v2/app/src/main/res/layout/search_result_rv_item.xml" value="0.25271739130434784" />
       </map>
     </option>
   </component>

@@ -42,13 +42,24 @@ public class feedMainActivity extends AppCompatActivity {
                 String message = et_message.getText().toString();
 
                 HashMap<String, String> userMap = new HashMap<>();
+                if (TextUtils.isEmpty(name)){
+                    et_name.setError("Enter Name");
+                }
+                if (TextUtils.isEmpty(problem)){
+                    et_problem.setError("Enter Name");
+                }
+                if (TextUtils.isEmpty(message)){
+                    et_message.setError("Enter Name");
+                }
+                else {
 
-                userMap.put("Name",name);
-                userMap.put("Problem",problem);
-                userMap.put("Message",message);
-                myRef.push().setValue(userMap);
-                Toast.makeText(feedMainActivity.this, "Thanks for FeedBacK !", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    userMap.put("Name", name);
+                    userMap.put("Problem", problem);
+                    userMap.put("Message", message);
+                    myRef.push().setValue(userMap);
+                    Toast.makeText(feedMainActivity.this, "Thanks for FeedBacK !", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }
             }
         });
 

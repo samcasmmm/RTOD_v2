@@ -3,6 +3,10 @@ package com.example.rtod_v2.ObjDetect;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import java.time.LocalDate;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
@@ -21,7 +25,9 @@ import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -152,10 +158,23 @@ public class objectDetectorClass {
                 float bottom=(float) Array.get(box1,2)*height;
                 float right=(float) Array.get(box1,3)*width;
                 // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
-                Imgproc.rectangle(rotated_mat_image,new Point(left,top),new Point(right,bottom),new Scalar(0, 255, 0, 255),2);
+                Imgproc.rectangle(rotated_mat_image,new Point(left,top),new Point(right,bottom),new Scalar(255, 0, 132, 255),2);
                 // write text on frame
                 // string of class name of object  // starting point                         // color of text           // size of text
-                Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
+                Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(110, 0, 255, 255),2);
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference().child("OBJECT-DETECTION-LOG");
+
+                LocalTime myObj = LocalTime.now();
+                String objName = labelList.get((int) class_value);
+
+                HashMap<String,String> objMap = new HashMap<>();
+                objMap.put("Name",objName);
+                objMap.put("Time",myObj.toString());
+
+                myRef.push().setValue(objMap);
+
             }
 
         }

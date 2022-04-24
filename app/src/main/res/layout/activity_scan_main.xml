@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient3"
+    android:background="@drawable/bg4"
     tools:context=".scanLen.scanMainActivity">
 
 
@@ -40,7 +40,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/custombtn3"
+                android:background="@drawable/custombtn"
                 android:lines="2"
                 android:text="Snap"
                 android:textColor="@color/white"
@@ -56,7 +56,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/custombtn3"
+                android:background="@drawable/custombtn"
                 android:lines="2"
                 android:textColor="@color/white"
                 android:text="Get Search Ressults"

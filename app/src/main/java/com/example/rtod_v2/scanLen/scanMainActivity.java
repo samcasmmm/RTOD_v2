@@ -59,8 +59,8 @@ public class scanMainActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> mTakePhoto = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            Log.d(TAG,"onActivityResults");
             if (result.getResultCode() == RESULT_OK & result.getData() != null) {
+                Log.d(TAG,"onActivityResults");
                 Bundle bundle = result.getData().getExtras();
                 imageBitmap = (Bitmap) bundle.get("data");
                 img.setImageBitmap(imageBitmap);
@@ -89,10 +89,12 @@ public class scanMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //dispatchTakePictureIntent();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (intent.resolveActivity(getPackageManager()) != null) {
+                if (intent.resolveActivity(getPackageManager()) == null) {
                     mTakePhoto.launch(intent);
+                    Toast.makeText(scanMainActivity.this, "yes", Toast.LENGTH_SHORT).show();
 //                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
+                Toast.makeText(scanMainActivity.this, "yes2", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -132,7 +134,7 @@ public class scanMainActivity extends AppCompatActivity {
     }
 
     private void searchData(String searchQuery) {
-        String apiKey = "36f62dd0d1619d9972d8619aa4a6a20f3a899e1185e9bd85a785bb2b71f5f1b1";
+        String apiKey = "0044b2846e0da6712e4ad71c68ce78b046b705c8c02ac0462270c9949bcb29f3";
         String url = "https://serpapi.com/search.json?q=" + searchQuery.trim() + "&location=Delhi,India&hl=en&gl=us&google_domain=google.com&api_key=" + apiKey;
 
         // creating a new variable for our request queue
