@@ -25,9 +25,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    ImageView profileEdit;
 //    Button RTODetectionBtn,HandSignBtn,EditProfileBtn,scan_lenBTN;
-    CardView cv_objectDetection, cv_signLang,cv_chatBot, cv_scanLen, cv_feedback,cv_faceRec;
+    CardView cv_objectDetection, cv_signLang,cv_chatBot, cv_scanLen, cv_feedback,cv_faceRec,cv_profileEdit,cv_FaceRecognition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         cv_signLang = findViewById(R.id.cv_sign_lang);
         cv_scanLen = findViewById(R.id.cv_scan_len);
         cv_chatBot = findViewById(R.id.cv_chatBOT);
-        profileEdit = findViewById(R.id.profile_edit);
+        cv_profileEdit = findViewById(R.id.cv_profile_edit);
         cv_feedback = findViewById(R.id.cv_feedback);
         cv_faceRec = findViewById(R.id.cv_faceRec);
+        cv_FaceRecognition = findViewById(R.id.cv_FaceRecognition);
 
         cv_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        profileEdit.setOnClickListener(new View.OnClickListener() {
+        cv_profileEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,AuthMainActivity.class));
@@ -99,5 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, com.example.rtod_v2.scanLen.scanMainActivity.class));
             }
         });
+
+        cv_FaceRecognition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,com.example.rtod_v2.FaceRecognition.CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
+
     }
 }

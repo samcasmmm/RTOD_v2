@@ -147,7 +147,6 @@ public class facialExpressionRecognition {
     }
 
     public void saveLog(){
-
         LocalDate dateObj = LocalDate.now();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("Face-Expression-LOG").child("Date : "+dateObj.toString());
