@@ -1,6 +1,7 @@
 package com.example.rtod_v2.chatBot;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.opencv.features2d.MSER;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private final String USER_KEY = "user";
     private ArrayList<ChatsModal>chatsModalArrayList;
     private ChatRV_Adapter chatRV_adapter;
+    TextToSpeech tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
                     MsgModal modal = response.body();
                     chatsModalArrayList.add(new ChatsModal(modal.getCnt(),BOT_KEY));
                     chatRV_adapter.notifyDataSetChanged();
+                    tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                        @Override
+                        public void onInit(int i) {
+                            tts.setLanguage(Locale.ENGLISH);
+                            tts.setSpeechRate(1.0f);
+                            tts.speak("Message Received "+modal.getCnt(),TextToSpeech.QUEUE_ADD,null);
+                        }
+                    });
                 }
             }
 
